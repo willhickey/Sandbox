@@ -6,15 +6,15 @@ class Main {
         System.out.println(containsNearbyDuplicate(testNumbers, 5));
     }
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        HashMap<Integer, Integer> lastIndex = new HashMap<>();
+        HashMap<Integer, Integer> lastIndex = new HashMap<Integer, Integer>();
         for(int i=0; i<nums.length; i++)
         {
-            if(lastIndex.containsKey(new Integer(nums[i])))
+            if(lastIndex.containsKey(nums[i]))
             {
-                if(i-((Integer)lastIndex.get(new Integer(nums[i]))).intValue() <= k)
+                if(i-lastIndex.get(nums[i]) <= k)
                     return true;
             }
-            lastIndex.put(new Integer(nums[i]), new Integer(i));
+            lastIndex.put(nums[i], i);
         }
         return false;
     }
